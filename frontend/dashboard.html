@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Task Dashboard</h2>
+
+  <input id="title" placeholder="Task title">
+  <input id="desc" placeholder="Description">
+  <button onclick="createTask()">Add Task</button>
+
+  <ul id="tasks"></ul>
+
+  <button onclick="logout()">Logout</button>
+</div>
+
+<script src="js/script.js"></script>
+
+<script>
+  loadTasks();
+</script>
+
+<script>
+  const token = localStorage.getItem("token");
+  if (token) {
+    const user = JSON.parse(atob(token.split('.')[1]));
+    document.getElementById("role").innerText = "Role: " + user.role;
+  }
+</script>
+
+</body>
+</html>
